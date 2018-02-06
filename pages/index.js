@@ -1,1 +1,1 @@
-export default () => <div>Halo arek-arek probolinggo!</div>
+export default () => <div>Halo arek-arek probolinggo!</div>;

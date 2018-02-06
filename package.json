@@ -18,5 +18,11 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "deploy": "NODE_ENV=production pm2 start server.js --name probolinggodev"
+  },
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1"
   }
 }
