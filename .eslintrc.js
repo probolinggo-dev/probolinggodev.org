@@ -17,6 +17,7 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "no-unused-vars": 0,
         "indent": [
             "error",
             2

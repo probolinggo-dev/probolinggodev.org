@@ -1,1 +1,7 @@
-export default () => <div>Halo arek-arek probolinggo!</div>;
+import styled from 'styled-components';
+
+const Title = styled.h1`
+  font-size: 1.4rem;
+`;
+
+export default () => <Title>Halo arek-arek probolinggo!</Title>;
