@@ -14,8 +14,8 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <meta name="google-site-verification" content="aD0AzsX7ARZ8BvPN_mzQoEnU3qRPZKv7QMquC1iBVpc" />
-          <title>Probolinggo Dev</title>
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           {this.props.styleTags}
           <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
         </Head>

@@ -1,4 +1,7 @@
 @import 'normalize.css';
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: "SF Optimized", system-ui, -apple-system, system-ui, ".SFNSText-Regular", sans-serif;
 }
