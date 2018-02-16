@@ -68,17 +68,46 @@ const RepoCard = styled.div`
   }
 `;
 
+const MemberCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  padding: 10px 20px;
+  align-items: center;
+  font-size: 1.1rem;
+  img {
+    width: 100px;
+    border-radius: 50%;
+  }
+  a {
+    display: inline-block;
+    margin: 10px 0;
+    color: #da9600;
+    text-decoration: none;
+    font-weight: bold;
+    &:hover {
+      color: #fcad00;
+      text-decoration: overline;
+    }
+  }
+`
+
 export default class Index extends React.PureComponent {
   constructor() {
     super();
     this.state = {
       loading: false,
+      isLoadingMembers: false,
+      members: [],
       projects: [],
     };
   }
 
   componentDidMount = async () => {
-    this.setState({loading: true});
+    this.setState({
+      loading: true,
+      isLoadingMembers: true,
+    });
     await octokit.authenticate({
       type: 'basic',
       username: config.github.username,
@@ -88,13 +117,21 @@ export default class Index extends React.PureComponent {
     const res = await octokit.repos.getForOrg({
       org: 'probolinggo-dev',
       type: 'public'
-    })
+    });
     const repos = await res.data;
-    console.log(repos);
     this.setState({
       projects: repos,
       loading: false,
     });
+
+    const members = await octokit.orgs.getMembers({
+      org: 'probolinggo-dev',
+      type: 'public'
+    })
+    this.setState({
+      isLoadingMembers: false,
+      members: members.data,
+    })
   }
 
   render() {
@@ -136,6 +173,35 @@ export default class Index extends React.PureComponent {
                       <p>{R.or(item.description, 'This repo doesn\'t have description yet!')}</p>
                     </div>
                   </RepoCard>
+                ))}
+              </div>
+            )
+          }
+        </Container>
+
+        <Container>
+          <SectionHead>
+            <h2>Contributors</h2>
+          </SectionHead>
+          {this.state.isLoadingMember
+            ? (
+              <p style={{
+                fontSize: '1.5rem',
+                textAlign: 'center',
+              }}>
+                Loading Contributors ...
+              </p>
+            ) : (
+              <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+              }}>
+                {this.state.members.map(item => (
+                  <MemberCard key={item.id}>
+                    <img src={item.avatar_url} alt={item.login}/>
+                    <a href={item.html_url} target="_blank">@{item.login}</a>
+                  </MemberCard>
                 ))}
               </div>
             )
