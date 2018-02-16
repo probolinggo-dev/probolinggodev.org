@@ -19,6 +19,11 @@ const HeaderBox = styled.div`
   text-align: center;
   padding: 80px 0;
   color: white;
+
+  @media (max-width: 720px) {
+    padding: 40px 20px;
+  }
+
   h1 {
     font-family: 'Nanum Pen Script', cursive;
     font-size: 3rem;
