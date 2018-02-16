@@ -25,7 +25,7 @@ const HeaderBox = styled.div`
   }
 
   h1 {
-    font-family: 'Nanum Pen Script', cursive;
+    font-family: 'Nanum Pen Script', cursive, serif;
     font-size: 3rem;
   }
   p {
