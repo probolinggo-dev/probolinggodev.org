@@ -183,7 +183,7 @@ export default class Index extends React.PureComponent {
           <SectionHead>
             <h2>Contributors</h2>
           </SectionHead>
-          {this.state.isLoadingMember
+          {this.state.isLoadingMembers
             ? (
               <p style={{
                 fontSize: '1.5rem',
