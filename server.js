@@ -8,4 +8,7 @@ const app = next({ dev });
 const handler = routes.getRequestHandler(app);
 
 app.prepare()
-  .then(() => express().use(handler).listen(port));
+  .then(() => {
+    express().use(express.static('static'));
+    express().use(handler).listen(port);
+  });

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export default styled.div`
   text-align: center;
-  padding: 80px 0;
+  padding: 150px 0;
   color: white;
 
   @media (max-width: 720px) {
