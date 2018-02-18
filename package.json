@@ -33,7 +33,8 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "deploy": "NODE_ENV=production pm2 start server.js --name probolinggodev"
+    "deploy": "NODE_ENV=production pm2 start server.js --name probolinggodev",
+    "redeploy": "yarn build && pm2 stop probolinggodev && yarn deploy"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.5.0",
