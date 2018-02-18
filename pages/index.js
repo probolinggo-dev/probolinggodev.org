@@ -6,91 +6,12 @@ const octokit = require('@octokit/rest')();
 const R = require('ramda');
 const config = require('../config');
 
-const Jumbotron = styled.div`
-  background-color: black;
-  background-image: url('https://images.unsplash.com/photo-1495510096779-5fbe73258c83?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=553db17bf3181cc07a29ccbadb0302ee&auto=format&fit=crop&w=3298&q=80');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-`;
-
-const HeaderBox = styled.div`
-  text-align: center;
-  padding: 80px 0;
-  color: white;
-
-  @media (max-width: 720px) {
-    padding: 40px 20px;
-  }
-
-  h1 {
-    font-family: 'Nanum Pen Script', cursive, serif;
-    font-size: 3rem;
-  }
-  p {
-    font-size: 1.5rem;
-  }
-`;
-
-const SectionHead = styled.div`
-  text-align: center;
-  padding: 20px 0;
-  h2 {
-    font-size: 2rem;
-  }
-`;
-
-const RepoCard = styled.div`
-  box-sizing: border-box;
-  flex: 50% 0 0;
-  padding: 7.5px;
-
-  @media (max-width: 920px) {
-    flex: 90% 0 0;
-  }
-
-  >.outline {
-    padding: 7.5px;
-    text-align: center;
-  }
-  a {
-    color: #da9600;
-    text-decoration: none;
-    &:hover {
-      color: #fcad00;
-      text-decoration: overline;
-    }
-  }
-  p {
-    margin-top: 0;
-    font-size: 1.8rem;
-  }
-`;
-
-const MemberCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-  padding: 10px 20px;
-  align-items: center;
-  font-size: 1.1rem;
-  img {
-    width: 100px;
-    border-radius: 50%;
-  }
-  a {
-    display: inline-block;
-    margin: 10px 0;
-    color: #da9600;
-    text-decoration: none;
-    font-weight: bold;
-    &:hover {
-      color: #fcad00;
-      text-decoration: overline;
-    }
-  }
-`
+// components
+import Jumbotron from '../components/Jumbotron';
+import HeaderBox from '../components/HeaderBox';
+import SectionHead from '../components/SectionHead';
+import RepoCard from '../components/RepoCard';
+import MemberCard from '../components/MemberCard';
 
 export default class Index extends React.PureComponent {
   constructor() {
