@@ -22,7 +22,7 @@
     "normalize.css": "^7.0.0",
     "pm2": "^2.9.3",
     "postcss-easy-import": "^3.0.0",
-    "postcss-loader": "^2.0.7",
+    "postcss-loader": "^2.1.1",
     "ramda": "^0.25.0",
     "raw-loader": "^0.5.1",
     "react": "^16.2.0",
