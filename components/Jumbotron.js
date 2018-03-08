@@ -7,5 +7,5 @@ export default styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  min-height: 80vh;
+  min-height: 50vh;
 `;
