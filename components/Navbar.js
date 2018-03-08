@@ -1,6 +1,21 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import Container from './Container';
+import {Link} from '../routes';
+const R = require('ramda');
+
+const Outer = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  width: 100%;
+  z-index: 99;
+  background-color: #ffffff;
+  border-bottom: solid #dadada 1px;
+  box-shadow: -1px 1px 3px 0px #00000036;
+`;
 
 const Navbar = styled.nav`
   width: 100%;
@@ -17,38 +32,56 @@ const Menus = styled.div`
     flex: 1 0 0;
     justify-content: flex-end;
     >li {
-      margin: 0 8px;
+      margin: 0 12px;
       &:first-child {
         margin-left: 0 !important;
-        margin-right: 4px;
+        margin-right: 6px;
       }
       &:last-child {
         margin-right: 0;
-        margin-left: 4px;
+        margin-left: 6px;
       }
       a {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 1.1rem;
+        display: inline-block;
         text-decoration: none;
       }
     }
   }
 `;
 
-export default class NavbarContainer extends React.PureComponent {
+type Props = {
+  routes: Array<{
+    label: string,
+    route: string,
+    params: any,
+  }>,
+};
+
+export default class NavbarContainer extends React.PureComponent<Props> {
   render() {
+    const {routes} = this.props;
     return (
-      <div>
-        <Container>
+      <Outer>
+        <Container noPadding>
           <nav>
             <Menus>
               <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Profile</a></li>
-                <li><a href="">About</a></li>
+                {R.or(routes, []).map((item, index) => {
+                  const {label, ...rest} = item;
+                  return (
+                    <li key={index}>
+                      <Link {...rest}>{label}</Link>
+                    </li>
+                  );
+                })}
               </ul>
             </Menus>
           </nav>
         </Container>
-      </div>
+      </Outer>
     );
   }
 }
