@@ -38,12 +38,17 @@
     "redeploy": "yarn build && pm2 stop probolinggodev && yarn deploy"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
     "babel-plugin-styled-components": "^1.5.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-flow": "^6.23.0",
     "eslint": "^4.17.0",
+    "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
     "file-loader": "^1.1.6",
+    "flow-bin": "^0.67.1",
     "url-loader": "^0.6.2"
   }
 }
