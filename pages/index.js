@@ -7,6 +7,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FontIcon from 'material-ui/FontIcon';
 const octokit = require('@octokit/rest')();
+import Navbar from '../components/Navbar';
 const R = require('ramda');
 const config = require('../config');
 const muiTheme = getMuiTheme({});
@@ -29,41 +30,59 @@ export default class Index extends React.PureComponent {
     };
   }
 
-  componentDidMount = async () => {
-    this.setState({
-      loading: true,
-      isLoadingMembers: true,
-    });
-    await octokit.authenticate({
-      type: 'basic',
-      username: config.github.username,
-      password: config.github.password,
-    });
+  componentDidMount() {
+    const init = async () => {
+      this.setState({
+        loading: true,
+        isLoadingMembers: true,
+      });
+      await octokit.authenticate({
+        type: 'basic',
+        username: config.github.username,
+        password: config.github.password,
+      });
 
-    const res = await octokit.repos.getForOrg({
-      org: 'probolinggo-dev',
-      type: 'public'
-    });
-    const repos = await res.data;
-    this.setState({
-      projects: repos,
-      loading: false,
-    });
+      const res = await octokit.repos.getForOrg({
+        org: 'probolinggo-dev',
+        type: 'public'
+      });
+      const repos = await res.data;
+      this.setState({
+        projects: repos,
+        loading: false,
+      });
 
-    const members = await octokit.orgs.getMembers({
-      org: 'probolinggo-dev',
-      type: 'public'
-    })
-    this.setState({
-      isLoadingMembers: false,
-      members: members.data,
-    })
+      const members = await octokit.orgs.getMembers({
+        org: 'probolinggo-dev',
+        type: 'public'
+      });
+      this.setState({
+        isLoadingMembers: false,
+        members: members.data,
+      });
+    };
+
+    init();
   }
 
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div style={{paddingBottom: '200px'}}>
+          <Navbar routes={[
+            {
+              label: 'Home',
+              route: '/',
+            },
+            {
+              label: 'Login',
+              route: '/login'
+            },
+            {
+              label: 'About',
+              route: '/about'
+            }
+          ]}/>
           <Jumbotron>
             <Container>
               <HeaderBox>
@@ -72,18 +91,18 @@ export default class Index extends React.PureComponent {
                 <br/><br/>
                 <RaisedButton
                   style={{margin: 10}}
-                  labelStyle={{color: "#ffffff"}}
-                  backgroundColor="#2da5e1"
-                  href="https://t.me/ProbolinggoDev"
-                  label="Join Telegram"
+                  labelStyle={{color: '#ffffff'}}
+                  backgroundColor='#2da5e1'
+                  href='https://t.me/ProbolinggoDev'
+                  label='Join Telegram'
                 />
 
                 <RaisedButton
                   style={{margin: 10}}
-                  labelStyle={{color: "#ffffff"}}
-                  backgroundColor="#4266b2"
-                  href="https://www.facebook.com/groups/345005749240961"
-                  label="Join Facebook"
+                  labelStyle={{color: '#ffffff'}}
+                  backgroundColor='#4266b2'
+                  href='https://www.facebook.com/groups/345005749240961'
+                  label='Join Facebook'
                 />
               </HeaderBox>
             </Container>
@@ -109,8 +128,8 @@ export default class Index extends React.PureComponent {
                 }}>
                   {this.state.projects.map(item => (
                     <RepoCard key={item.id}>
-                      <div className="outline">
-                        <a href={item.clone_url} target="_blank" className="title">
+                      <div className='outline'>
+                        <a href={item.clone_url} target='_blank' className='title'>
                           <h2>{item.name}</h2>
                         </a>
                         <p>{R.or(item.description, 'This repo doesn\'t have description yet!')}</p>
@@ -143,7 +162,7 @@ export default class Index extends React.PureComponent {
                   {this.state.members.map(item => (
                     <MemberCard key={item.id}>
                       <img src={item.avatar_url} alt={item.login}/>
-                      <a href={item.html_url} target="_blank">@{item.login}</a>
+                      <a href={item.html_url} target='_blank'>@{item.login}</a>
                     </MemberCard>
                   ))}
                 </div>

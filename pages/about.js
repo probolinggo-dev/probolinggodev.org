@@ -1,6 +1,7 @@
 import React from 'react';
+import withAuth from '../utils/withAuth';
 
-export default class About extends React.Component {
+class About extends React.Component {
   render() {
     return (
       <div>
@@ -18,3 +19,5 @@ export default class About extends React.Component {
     );
   }
 }
+
+export default withAuth(About);
