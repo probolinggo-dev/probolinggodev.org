@@ -6,11 +6,12 @@ import RaisedButton from 'material-ui/RaisedButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FontIcon from 'material-ui/FontIcon';
+import Layout from '../components/Layout';
 const octokit = require('@octokit/rest')();
-import Navbar from '../components/Navbar';
 const R = require('ramda');
 const config = require('../config');
 const muiTheme = getMuiTheme({});
+
 
 // components
 import Jumbotron from '../components/Jumbotron';
@@ -67,43 +68,13 @@ export default class Index extends React.PureComponent {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
+      <Layout>
         <div style={{paddingBottom: '200px'}}>
-          <Navbar routes={[
-            {
-              label: 'Home',
-              route: '/',
-            },
-            {
-              label: 'Login',
-              route: '/login'
-            },
-            {
-              label: 'About',
-              route: '/about'
-            }
-          ]}/>
           <Jumbotron>
             <Container>
               <HeaderBox>
                 <h1>Dari Probolinggo, Untuk Dunia.</h1>
                 <p>Kami adalah sebuah kelompok dari berbagai background yang berkumpul untuk berkolaborasi membuat impact untuk dunia, atau setidaknya untuk diri kita masing-masing. Kita percaya bahwa dunia ini akan terus menjadi tempat yang lebih baik ketika penghuninya terus bekerja sama, saling berbagi, dan memecahkan masalah.</p>
-                <br/><br/>
-                <RaisedButton
-                  style={{margin: 10}}
-                  labelStyle={{color: '#ffffff'}}
-                  backgroundColor='#2da5e1'
-                  href='https://t.me/ProbolinggoDev'
-                  label='Join Telegram'
-                />
-
-                <RaisedButton
-                  style={{margin: 10}}
-                  labelStyle={{color: '#ffffff'}}
-                  backgroundColor='#4266b2'
-                  href='https://www.facebook.com/groups/345005749240961'
-                  label='Join Facebook'
-                />
               </HeaderBox>
             </Container>
           </Jumbotron>
@@ -170,7 +141,7 @@ export default class Index extends React.PureComponent {
             }
           </Container>
         </div>
-      </MuiThemeProvider>
+      </Layout>
     );
   }
 }
