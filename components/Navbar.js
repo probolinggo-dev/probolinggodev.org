@@ -6,9 +6,6 @@ import {Link} from '../routes';
 const R = require('ramda');
 
 const Outer = styled.nav`
-  position: fixed;
-  top: 0;
-  left: 0;
   backface-visibility: hidden;
   width: 100%;
   z-index: 99;
@@ -18,11 +15,12 @@ const Outer = styled.nav`
 `;
 
 const Navbar = styled.nav`
-  width: 100%;
   display: flex;
+  align-items: center;
 `;
 
 const Menus = styled.div`
+  flex: 1 0 0;
   display: flex;
   >ul {
     list-style: none;
@@ -52,34 +50,47 @@ const Menus = styled.div`
   }
 `;
 
+const Brand = styled.div`
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #3e3e3e;
+`;
+
 type Props = {
+  brand: string,
+  brandImage?: string,
   routes: Array<{
     label: string,
     route: string,
-    params: any,
+    params?: any,
   }>,
 };
 
 export default class NavbarContainer extends React.PureComponent<Props> {
   render() {
-    const {routes} = this.props;
+    const {routes, brand} = this.props;
     return (
       <Outer>
         <Container noPadding>
-          <nav>
+          <Navbar>
+            <Brand>
+              {brand}
+            </Brand>
             <Menus>
               <ul>
                 {R.or(routes, []).map((item, index) => {
                   const {label, ...rest} = item;
                   return (
                     <li key={index}>
-                      <Link {...rest}>{label}</Link>
+                      <Link {...rest}>
+                        <a>{label}</a>
+                      </Link>
                     </li>
                   );
                 })}
               </ul>
             </Menus>
-          </nav>
+          </Navbar>
         </Container>
       </Outer>
     );
