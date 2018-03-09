@@ -28,7 +28,7 @@ export default class AuthService {
   }
 
   setToken(token) {
-    if (localStorage) {
+    if (typeof localStorage !== 'undefined') {
       localStorage.setItem('auth_token', token);
       return true;
     }
@@ -36,13 +36,13 @@ export default class AuthService {
   }
 
   getToken() {
-    if (localStorage) {
+    if (typeof localStorage !== 'undefined') {
       return localStorage.getItem('auth_token');
     }
   }
 
   logout() {
-    if (localStorage) {
+    if (typeof localStorage !== 'undefined') {
       localStorage.removeItem('auth_token');
       return true;
     }
