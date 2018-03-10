@@ -3,4 +3,5 @@ routes
   .add('index', '/', 'index')
   .add('login', '/login', 'login')
   .add('logout', '/logout', 'logout')
-  .add('about', '/about', 'about');
+  .add('about', '/about', 'about')
+  .add('profile', '/@:username', 'profile');
