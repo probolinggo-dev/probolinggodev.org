@@ -1,11 +1,12 @@
 import axios from 'axios';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+const config = require('../config');
 const path = require('path');
 const R = require('ramda');
 
 export default class AuthService {
   constructor(endpoint) {
-    this.endpoint = R.or(endpoint, 'http://localhost:8000');
+    this.endpoint = R.or(endpoint, config.apiEndpoint);
     this.login = this.login.bind(this);
     this.loggedIn = this.loggedIn.bind(this);
   }
