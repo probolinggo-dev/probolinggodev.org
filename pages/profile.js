@@ -48,8 +48,10 @@ export default class Profile extends React.PureComponent {
     try {
       const response = await axios.get(`${config.apiEndpoint}/user/${username}`);
       const {data} = response;
+      const unsplash = await axios.get(`${config.apiEndpoint}/unsplash/random`);
       return {
         data,
+        coverImage: unsplash.data.urls.regular,
       };
     } catch (err) {
       if (err) return {data: null};
@@ -57,15 +59,15 @@ export default class Profile extends React.PureComponent {
   }
 
   render() {
-    const {data} = this.props;
+    const {data, coverImage} = this.props;
     if (R.isNil(data)) {
       return (<div>User Not Found!</div>);
     }
     return (
       <Layout>
-        <Container>
+        <Container noPadding>
           <CoverImage>
-            <img src="https://scontent-sin6-2.xx.fbcdn.net/v/t31.0-8/12248148_1147303431965083_7784270382171328652_o.jpg?_nc_eui2=v1%3AAeFLrZa1gltsbg-GjeDaiKxTGYCabJxtqnxZqwoQJf2v9friCgw3ISUhHOyys8U-dBmCijE3Z3AOPXyYfzkX--dHzJlIzBMPDgqj8Z7FjcwRPA&oh=f533d187631b5104301d5ac4987a57a0&oe=5B3A72F9" alt=""/>
+            <img src={coverImage} alt=""/>
           </CoverImage>
           <ProfileBox>
             <img src={data.meta.profilePicture} alt={data.name} className="profilePicture"/>
