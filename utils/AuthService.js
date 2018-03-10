@@ -5,8 +5,8 @@ const path = require('path');
 const R = require('ramda');
 
 export default class AuthService {
-  constructor(endpoint) {
-    this.endpoint = R.or(endpoint, config.apiEndpoint);
+  constructor() {
+    this.endpoint = config.apiEndpoint;
     this.login = this.login.bind(this);
     this.loggedIn = this.loggedIn.bind(this);
   }
