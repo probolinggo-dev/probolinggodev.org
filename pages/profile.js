@@ -168,7 +168,7 @@ export default class Profile extends React.PureComponent {
             ))}
           </div>
           <br/><br/>
-          {this.state.currentPage >= this.state.totalPage ? null : FetchButton()}
+          {this.state.currentPage >= (this.state.totalPage + 1) ? null : FetchButton()}
           <br/><br/><br/>
         </Container>
       </Layout>
