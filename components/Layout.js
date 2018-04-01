@@ -2,6 +2,7 @@
 import React from 'react';
 import AuthService from '../utils/AuthService';
 import Navbar from './Navbar';
+const R = require('ramda');
 const Auth = new AuthService;
 
 const routes = [
@@ -34,7 +35,12 @@ export default class Layout extends React.PureComponent<Props> {
     ];
     return (
       <div>
-        <Navbar brand="ProbolinggoDev" routes={extendsRoutes}/>
+        <Navbar
+          root="/"
+          brandImage="/static/assets/probolinggo-dev.svg"
+          brand="ProbolinggoDev"
+          routes={extendsRoutes}
+        />
         {this.props.children}
       </div>
     );
