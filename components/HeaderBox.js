@@ -10,8 +10,10 @@ export default styled.div`
   }
 
   h1 {
-    font-family: 'Nanum Pen Script', cursive, serif;
-    font-size: 3rem;
+    font-family: "Alegreya Sans", "SF Optimized", system-ui, -apple-system, system-ui, ".SFNSText-Regular";
+    font-size: 2.4rem;
+    margin: 0;
+    line-height: 1;
   }
   p {
     font-size: 1.5rem;

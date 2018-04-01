@@ -19,6 +19,7 @@ import HeaderBox from '../components/HeaderBox';
 import SectionHead from '../components/SectionHead';
 import RepoCard from '../components/RepoCard';
 import MemberCard from '../components/MemberCard';
+import Button from '../components/primitive/Button';
 
 export default class Index extends React.PureComponent {
   constructor() {
@@ -75,6 +76,7 @@ export default class Index extends React.PureComponent {
               <HeaderBox>
                 <h1>Dari Probolinggo, Untuk Dunia.</h1>
                 <p>Kami adalah sebuah kelompok dari berbagai background yang berkumpul untuk berkolaborasi membuat impact untuk dunia, atau setidaknya untuk diri kita masing-masing. Kita percaya bahwa dunia ini akan terus menjadi tempat yang lebih baik ketika penghuninya terus bekerja sama, saling berbagi, dan memecahkan masalah.</p>
+                <Button href="http://t.me/ProbolinggoDev" target="_blank">Join Telegram</Button>
               </HeaderBox>
             </Container>
           </Jumbotron>
