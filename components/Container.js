@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: ${props => props.noPadding ? '0 10px' : '10px'};
+  padding: ${props => props.noPadding ? '0 20px' : '20px'};
 `;
 
 export default ({children, ...rest}) => (
