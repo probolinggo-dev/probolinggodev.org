@@ -1,9 +1,9 @@
 // @flow
 import React from 'react';
-import AuthService from '../utils/AuthService';
+import Auth from '../utils/Auth';
 import Navbar from './Navbar';
 const R = require('ramda');
-const Auth = new AuthService;
+const auth = new Auth();
 
 const routes = [
   {
@@ -26,20 +26,13 @@ export default class Layout extends React.PureComponent<Props> {
   }
 
   render() {
-    const extendsRoutes = [
-      ...routes,
-      {
-        label: Auth.loggedIn() ? 'Logout' : 'Login',
-        route: Auth.loggedIn() ? '/logout' : '/login',
-      }
-    ];
     return (
       <div>
         <Navbar
           root="/"
           brandImage="/static/assets/probolinggo-dev.svg"
           brand="ProbolinggoDev"
-          routes={extendsRoutes}
+          routes={routes}
         />
         {this.props.children}
       </div>
