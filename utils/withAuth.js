@@ -1,10 +1,10 @@
 import React from 'react';
 import Router from 'next/router';
 import axios from 'axios';
-import AuthService from './AuthService';
+import Auth from './Auth';
 
 export default function withAuth(AuthComponent) {
-  const Auth = new AuthService();
+  const auth = new Auth();
   return class Authenticated extends React.PureComponent {
     constructor(props) {
       super(props);
@@ -14,7 +14,7 @@ export default function withAuth(AuthComponent) {
     }
 
     componentDidMount() {
-      if (!Auth.loggedIn()) {
+      if (!auth.isAuthenticated()) {
         Router.push('/login');
       } else {
         this.setState({loading: false});
@@ -28,7 +28,7 @@ export default function withAuth(AuthComponent) {
             <div>
               <br/>
             </div>
-          ) : <AuthComponent {...this.props} auth={Auth}/>}
+          ) : <AuthComponent {...this.props} auth={auth}/>}
         </div>
       );
     }

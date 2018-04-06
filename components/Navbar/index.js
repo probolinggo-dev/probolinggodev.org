@@ -3,8 +3,10 @@ import React from 'react';
 import styled from 'styled-components';
 import Container from '../Container';
 import MobileMenu from './mobileMenu';
+import Auth from '../../utils/Auth';
 import {Link} from '../../routes';
 const R = require('ramda');
+const auth = new Auth();
 
 const Outer = styled.div`
   backface-visibility: hidden;
@@ -93,6 +95,53 @@ const ToggleMenuButton = styled.button`
   }
 `;
 
+const ProfileThumb = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 10px;
+  a {
+    color: #dea426 !important;
+  }
+
+  .child {
+    position: absolute;
+    background: white;
+    min-width: 170px;
+    right: 0;
+    top: 110%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 14px 3px #00000036;
+
+    > ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      text-align: right;
+      line-height: 1.7;
+      font-size: 1.2rem;
+      font-weight: 500;
+      > li {
+        a {
+          padding: 0;
+          color: #454849 !important;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+`;
+
+const ProfileImage = styled.img`
+  height: 35px;
+  border-radius: 50%;
+  margin-left: 10px;
+`;
+
 type Props = {
   root?: string,
   brand: string,
@@ -106,11 +155,29 @@ type Props = {
 
 type State = {
   toggleMobileMenu: boolean,
+  isAuthenticated: boolean,
+  toggleProfile: boolean,
+  profile: {
+    name: string,
+    nickname: string,
+    picture: string,
+    sub: string,
+    updated_at: string,
+  },
 }
 
 export default class NavbarContainer extends React.PureComponent<Props, State> {
   state = {
     toggleMobileMenu: false,
+    isAuthenticated: false,
+    toggleProfile: false,
+    profile: {
+      name: '',
+      nickname: '',
+      picture: '',
+      sub: '',
+      updated_at: '',
+    }
   }
 
   constructor(props: Props) {
@@ -118,6 +185,22 @@ export default class NavbarContainer extends React.PureComponent<Props, State> {
     const self: any = this;
     self.handleMenuClick = self.handleMenuClick.bind(this);
     self.handleMobileMenuClose = self.handleMobileMenuClose.bind(this);
+    self.toggleProfile = self.toggleProfile.bind(this);
+  }
+
+  async componentDidMount() {
+    if (auth.isAuthenticated()) {
+      const profile = await auth.getUserProfile();
+      this.setState({
+        isAuthenticated: true,
+        profile,
+      });
+    }
+  }
+
+  toggleProfile(e: any) {
+    e.preventDefault();
+    this.setState(prevState => ({toggleProfile: !prevState.toggleProfile}));
   }
 
   handleMenuClick(e: any) {
@@ -140,7 +223,9 @@ export default class NavbarContainer extends React.PureComponent<Props, State> {
       brandImage,
       root,
     } = this.props;
-    const {toggleMobileMenu} = this.state;
+    const {toggleMobileMenu, profile} = this.state;
+    const {name, nickname, picture} = profile;
+
     return (
       <Outer>
         <Container noPadding>
@@ -172,6 +257,27 @@ export default class NavbarContainer extends React.PureComponent<Props, State> {
                     </li>
                   );
                 })}
+                <li>
+                  {this.state.isAuthenticated
+                    ? (
+                      <ProfileThumb onClick={this.toggleProfile}>
+                        <a>@{nickname}</a>
+                        <ProfileImage src={picture} alt={name} />
+                        {this.state.toggleProfile
+                          ? (
+                            <div className="child">
+                              <ul>
+                                <li>
+                                  <Link route="/logout">
+                                    <a>Logout</a>
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
+                          ) : null }
+                      </ProfileThumb>
+                    ) : <Link route="/login"><a>Login</a></Link>}
+                </li>
               </ul>
             </Menus>
             <MobileMenu

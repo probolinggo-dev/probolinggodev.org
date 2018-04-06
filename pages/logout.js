@@ -1,13 +1,11 @@
 import React from 'react';
 import Router from 'next/router';
-import AuthService from '../utils/AuthService';
+import Auth from '../utils/Auth';
 
 export default class Logout extends React.PureComponent {
   componentDidMount() {
-    const Auth = new AuthService;
-    if (Auth.logout()) {
-      Router.push('/');
-    }
+    const auth = new Auth();
+    auth.logout();
   }
 
   render() {
