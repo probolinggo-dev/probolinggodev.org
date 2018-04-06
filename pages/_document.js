@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+          <link rel="stylesheet" type="text/css" href="/static/css/nprogress.css" />
           <link rel="icon" type="image/png" href="/static/assets/favicon-128.png" sizes="128x128" />
           <link rel="icon" type="image/png" href="/static/assets/favicon-192.png" sizes="192x192" />
           <title>Probolinggo Dev</title>

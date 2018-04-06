@@ -1,9 +1,17 @@
 // @flow
 import React from 'react';
+import Head from 'next/head';
 import Auth from '../utils/Auth';
 import Navbar from './Navbar';
+import nprogress from 'nprogress';
+import Router from 'next/router';
 const R = require('ramda');
 const auth = new Auth();
+
+Router.onRouteChangeStart = () => nprogress.start();
+
+Router.onRouteChangeComplete = () => nprogress.done();
+Router.onRouteChangeError = () => nprogress.done();
 
 const routes = [
   {
