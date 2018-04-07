@@ -57,7 +57,10 @@ type Props = {
   toggle: boolean,
   routes: Array<{
     label: string,
-    route: string,
+    route: string | Array<{
+      label: string,
+      route: string,
+    }>,
     params?: any,
   }>,
   onClose: () => any,
@@ -96,10 +99,13 @@ export default class MobileMenu extends React.Component<Props> {
         <Menu>
           <ul>
             {R.or(routes, []).map((item, index) => {
-              const {label, ...rest} = item;
+              const {label, route, ...rest} = item;
+              if (Array.isArray(route)) {
+                return null;
+              }
               return (
                 <li key={index}>
-                  <Link {...rest}>
+                  <Link route={route} {...rest}>
                     <a>{label}</a>
                   </Link>
                 </li>
