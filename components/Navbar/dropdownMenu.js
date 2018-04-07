@@ -24,10 +24,15 @@ export default class DropdownMenu extends React.PureComponent<Props, State> {
     super(props);
     const self: any = this;
     self.handleToggle = self.handleToggle.bind(this);
+    self.handleUlClick = self.handleUlClick.bind(this);
   }
 
   handleToggle() {
     this.setState(prevState => ({toggle: !prevState.toggle}));
+  }
+
+  handleUlClick(e: any) {
+    e.stopPropagation();
   }
 
   render() {
@@ -37,7 +42,7 @@ export default class DropdownMenu extends React.PureComponent<Props, State> {
     const dropdown = (
       <Dropdown>
         <div onClick={this.handleToggle}>
-          <ul>
+          <ul onClick={this.handleUlClick}>
             {route.map((item, i) => (
               <li key={i}>
                 <Link route={item.route}>
