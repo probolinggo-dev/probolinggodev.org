@@ -21,6 +21,27 @@ const routes = [
   {
     label: 'About',
     route: '/about',
+  },
+  {
+    label: 'Tools',
+    route: [
+      {
+        label: 'Ex Dropdown 1',
+        route: '/about',
+      },
+      {
+        label: 'Ex Dropdown 2',
+        route: '/about',
+      },
+      {
+        label: 'Ex Dropdown 3',
+        route: '/about',
+      },
+      {
+        label: 'Ex Dropdown 4',
+        route: '/about',
+      },
+    ]
   }
 ];
 
