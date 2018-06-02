@@ -119,6 +119,7 @@ export const ProfileThumb = styled.div`
     background: white;
     min-width: 170px;
     right: 0;
+    z-index: 99;
     top: 110%;
     padding: 10px 15px;
     border-radius: 10px;
