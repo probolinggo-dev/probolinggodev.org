@@ -1,7 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import routes from './routes';
 import * as serviceWorker from './serviceWorker';
+
+const App = () => (
+  <Router>
+    <div>
+      {routes.map((item, index) => {
+        const {screen, ...rest} = item;
+        const Component = require(`./screen/${screen}`).default;
+        return <Route component={Component} {...rest} />;
+      })}
+    </div>
+  </Router>
+)
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
