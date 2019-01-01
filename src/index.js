@@ -10,7 +10,7 @@ const App = () => (
       {routes.map((item, index) => {
         const {screen, ...rest} = item;
         const Component = require(`./screen/${screen}`).default;
-        return <Route component={Component} {...rest} />;
+        return <Route key={index} component={Component} {...rest} />;
       })}
     </div>
   </Router>
