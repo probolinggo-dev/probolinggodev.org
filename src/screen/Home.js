@@ -1,10 +1,12 @@
-import React from 'react';
-import Navbar from '../component/Navbar';
+import React from 'react'
+import Navbar from '../component/Navbar'
+import Project from '../component/Project'
 
-export default function Home () {
+export default function Home() {
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar />
+      <Project />
     </div>
   )
 }
