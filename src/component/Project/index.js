@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import ProjectCard from './ProjectCard'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import ProjectCard from './ProjectCard';
 
 const items = [
   {
@@ -9,7 +9,7 @@ const items = [
     title: 'FastText',
     description: 'Library for text representation and classification',
     githubURL: 'https://github.com/facebookresearch/fastText',
-    webURL: 'https://fasttext.cc/'
+    webURL: 'https://fasttext.cc/',
   },
   {
     logoURL:
@@ -18,14 +18,14 @@ const items = [
     description:
       "FAIR's research platform for object detection research, implementing popular algorithms like Mask R-CNN and RetinaNet",
     githubURL: 'https://github.com/facebookresearch/Detectron',
-    webURL: 'https://probolinggodev.org'
+    webURL: 'https://probolinggodev.org',
   },
   {
     logoURL: 'https://opensource.fb.com/templates/dist/images/pytorch.svg',
     title: 'PyTorch',
     description: 'Deep learning Framework',
     githubURL: 'https://github.com/pytorch/pytorch',
-    webURL: 'https://pytorch.org/'
+    webURL: 'https://pytorch.org/',
   },
   {
     logoURL:
@@ -34,7 +34,7 @@ const items = [
     description:
       'Tool for producing high quality forecasts for time series data that has multiple seasonality with linier or non-linier growth',
     githubURL: 'https://github.com/facebook/prophet',
-    webURL: 'https://facebook.github.io/prophet/'
+    webURL: 'https://facebook.github.io/prophet/',
   },
   {
     logoURL:
@@ -43,7 +43,7 @@ const items = [
     description:
       'A domain spesific language to express machine learning workloads',
     githubURL: 'https://github.com/facebookresearch/TensorComprehensions',
-    webURL: 'https://facebookresearch.github.io/TensorComprehensions/'
+    webURL: 'https://facebookresearch.github.io/TensorComprehensions/',
   },
   {
     logoURL: 'https://opensource.fb.com/templates/dist/images/torchcraftai.png',
@@ -51,12 +51,12 @@ const items = [
     description:
       'A bot platform for machine learning research on StarCraft Brood War',
     githubURL: 'https://github.com/TorchCraft/TorchCraftAI',
-    webURL: 'https://torchcraft.github.io/TorchCraftAI/'
-  }
-]
+    webURL: 'https://torchcraft.github.io/TorchCraftAI/',
+  },
+];
 
-class Project extends Component {
-  renderProjectCard() {
+function Project() {
+  function renderProjectCard() {
     return items.map((item, index) => (
       <ProjectCard
         key={index}
@@ -66,26 +66,25 @@ class Project extends Component {
         githubURL={item.githubURL}
         webURL={item.webURL}
       />
-    ))
+    ));
   }
 
-  render() {
-    return (
-      <Container>
-        <h1>Open Source Project</h1>
-        <ProjectContainer>{this.renderProjectCard()}</ProjectContainer>
-      </Container>
-    )
-  }
+  return (
+    <Container>
+      <h1>Open Source Project</h1>
+      <ProjectContainer>{renderProjectCard()}</ProjectContainer>
+    </Container>
+  );
 }
+
 
 const Container = styled.div`
   padding: 25px 3vw;
-`
+`;
 
 const ProjectContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-`
+`;
 
-export default Project
+export default Project;
