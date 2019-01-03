@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import logo from '../assets/logo/variant1.png'
-const DEFAULT_BACKGROUND =
-  'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80'
+import React from 'react';
+import styled from 'styled-components';
+import logo from '../assets/logo/variant1.png';
+
+const DEFAULT_BACKGROUND = 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80';
 
 const Container = styled.div`
   position: relative;
-`
+`;
 
 const StyledHeader = styled.div`
   height: 500px;
@@ -32,7 +32,7 @@ const StyledHeader = styled.div`
     left: 0;
     background: rgba(0, 0, 0, 0.32);
   }
-`
+`;
 
 const StyledNav = styled.nav`
   position: absolute;
@@ -74,35 +74,36 @@ const StyledNav = styled.nav`
       }
     }
   }
-`
+`;
 
-export default function Navbar() {
+export default function Header() {
   return (
     <Container>
       <StyledNav>
-        <div className='logo-wrapper'>
-          <a href='/'>
-            <img src={logo} alt='probolinggo dev' />
+        <div className="logo-wrapper">
+          <a href="/">
+            <img src={logo} alt="probolinggo dev" />
           </a>
         </div>
-        <div className='nav-wrapper'>
+        <div className="nav-wrapper">
           <ul>
             <li>
-              <a href='/'>Project</a>
+              <a href="/">Project</a>
             </li>
             <li>
-              <a href='/'>About</a>
+              <a href="/">About</a>
             </li>
             <li>
-              <a href='/'>Github</a>
+              <a href="/">Github</a>
             </li>
           </ul>
         </div>
       </StyledNav>
       <StyledHeader
         style={{
-          backgroundImage: `url(${DEFAULT_BACKGROUND})`
-        }}>
+          backgroundImage: `url(${DEFAULT_BACKGROUND})`,
+        }}
+      >
         <section>
           <article>
             <h1>Engineering Collaboration</h1>
@@ -116,5 +117,5 @@ export default function Navbar() {
         </section>
       </StyledHeader>
     </Container>
-  )
+  );
 }
