@@ -3,29 +3,26 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  logoURL: string,
+  image: string,
   title: string,
   description: string,
-  githubURL: string,
-  webURL: string,
+  github: string,
 }
 
 function ProjectCard(props: Props) {
   const {
-    logoURL,
+    image,
     title,
     description,
-    githubURL,
-    webURL,
+    github,
   } = props;
   return (
     <Container>
-      <Logo src={logoURL} alt="project logo" />
+      <Logo src={image} alt="project logo" />
       <Title>{title}</Title>
       <Description>{description}</Description>
       <LinkContainer>
-        <Link href={githubURL}>Github</Link>
-        <Link href={webURL}>Website</Link>
+        <Link href={github}>Github</Link>
       </LinkContainer>
     </Container>
   );
