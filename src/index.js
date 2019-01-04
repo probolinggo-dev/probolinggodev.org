@@ -7,7 +7,7 @@ import routes from './routes';
 import * as serviceWorker from './serviceWorker';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql',
+  uri: `${window.location.origin}/graphql`,
 });
 
 const App = () => (
