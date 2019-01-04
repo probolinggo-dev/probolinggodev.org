@@ -60,7 +60,7 @@ const projectItems = [
 export default function Home() {
   return (
     <div>
-      <Header />
+      <Header title="Engineering Collaboration" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ipsa veniam sint praesentium quod accusamus, culpa at. Dolore enim facere soluta impedit eligendi delectus tempora nesciunt natus, neque, ex distinctio." />
       <Container>
         <h2>OpenSource Projects</h2>
         <Row>

@@ -41,6 +41,7 @@ const StyledRow = styled.div`
 
     @media (max-width: 768px) {
       flex: ${props => `calc(100% - ${props.spacer}px) 0 0`};
+      margin-left: 0;
     }
   }
 `;

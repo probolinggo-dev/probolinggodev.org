@@ -4,4 +4,8 @@ export default [
     exact: true,
     screen: 'Home',
   },
+  {
+    path: '/about',
+    screen: 'About',
+  },
 ];

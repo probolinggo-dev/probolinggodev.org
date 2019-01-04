@@ -1,33 +1,59 @@
-import React from 'react';
+// @flow
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo/variant1.png';
 import Container from './Container';
 
 const DEFAULT_BACKGROUND = 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80';
 
-export default function Header() {
+const DEFAULT_MENU = [
+  {
+    path: '/about',
+    label: 'About',
+  },
+];
+
+type Menu = {
+  path: string,
+  label: string,
+}
+
+type Props = {
+  title: string,
+  description: string,
+  menus: [Menu],
+}
+
+export default function Header(props: Props) {
+  const { title, description, menus = DEFAULT_MENU } = props;
+  const [mobileMenuVisible, setMobileMenu] = useState(false);
+  const toggleMenu = () => setMobileMenu(!mobileMenuVisible);
+
   return (
     <Wrapper>
       <StyledNav>
         <Container>
           <div className="logo-wrapper">
-            <a href="/">
+            <Link to="/">
               <img src={logo} alt="probolinggo dev" />
-            </a>
+            </Link>
           </div>
-          <div className="nav-wrapper">
+          <div
+            className="nav-wrapper"
+            style={{
+              left: mobileMenuVisible ? '0' : '-100%',
+            }}
+          >
             <ul>
-              <li>
-                <a href="/">Project</a>
-              </li>
-              <li>
-                <a href="/">About</a>
-              </li>
-              <li>
-                <a href="/">Github</a>
-              </li>
+              {menus.map((n, i) => (
+                <li key={i}>
+                  <Link to={n.path}>{n.label}</Link>
+                </li>
+              ))}
             </ul>
           </div>
+          <MenuButton onClick={toggleMenu}>menu</MenuButton>
         </Container>
       </StyledNav>
       <StyledHeader
@@ -38,12 +64,9 @@ export default function Header() {
         <section>
           <Container>
             <article>
-              <h1>Engineering Collaboration</h1>
+              <h1>{title}</h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur voluptatibus sed totam harum consequatur perspiciatis,
-                asperiores deleniti nobis quis cumque iusto dolores eos nemo
-                quisquam adipisci inventore! Ut, explicabo aspernatur.
+                {description}
               </p>
             </article>
           </Container>
@@ -52,6 +75,17 @@ export default function Header() {
     </Wrapper>
   );
 }
+
+const MenuButton = styled.button`
+  color: white;
+  font-weight: bold;
+  border: none;
+  background: transparent;
+  display: none;
+  @media (max-width: 768px) {
+    display: initial;
+  }
+`;
 
 const Wrapper = styled.div`
   position: relative;
@@ -95,11 +129,14 @@ const StyledNav = styled.nav`
   width: 100%;
   z-index: 99;
   padding: 25px 0;
+  @media (max-width: 768px) {
+    padding: 10px 0;
+  }
   > div {
     display: flex;
     flex-direction: row;
     background-color: transparent;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 
@@ -111,6 +148,9 @@ const StyledNav = styled.nav`
   .logo-wrapper {
     img {
       height: 30px;
+      @media (max-width: 768px) {
+        height: 25px;
+      }
     }
   }
 
@@ -118,6 +158,22 @@ const StyledNav = styled.nav`
     flex: 1;
     display: flex;
     justify-content: flex-end;
+
+    @media (max-width: 768px) {
+      position: fixed;
+      padding-top: 50px;
+      top: 0;
+      left: -100%;
+      background: black;
+      height: 100vh;
+
+      ul {
+        > li {
+          display: block !important;
+          padding: 10px 60px !important;
+        }
+      }
+    }
 
     ul {
       list-style: none;
