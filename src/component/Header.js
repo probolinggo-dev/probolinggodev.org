@@ -111,6 +111,9 @@ const StyledHeader = styled.div`
     z-index: 2;
     color: white;
     padding-top: 200px;
+    @media (max-width: 768px) {
+      padding-top: 150px;
+    }
     article {
       p {
         font-size: 1.2rem;
