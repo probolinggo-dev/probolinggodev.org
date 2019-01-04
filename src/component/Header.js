@@ -1,4 +1,6 @@
 // @flow
+
+// $FlowFixMe
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -23,10 +25,16 @@ type Props = {
   title: string,
   description: string,
   menus: [Menu],
+  background: string,
 }
 
 export default function Header(props: Props) {
-  const { title, description, menus = DEFAULT_MENU } = props;
+  const {
+    title,
+    description,
+    menus = DEFAULT_MENU,
+    background = DEFAULT_BACKGROUND,
+  } = props;
   const [mobileMenuVisible, setMobileMenu] = useState(false);
   const toggleMenu = () => setMobileMenu(!mobileMenuVisible);
 
@@ -58,7 +66,7 @@ export default function Header(props: Props) {
       </StyledNav>
       <StyledHeader
         style={{
-          backgroundImage: `url(${DEFAULT_BACKGROUND})`,
+          backgroundImage: `url(${background})`,
         }}
       >
         <section>
@@ -104,6 +112,10 @@ const StyledHeader = styled.div`
     color: white;
     padding-top: 200px;
     article {
+      p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+      }
       max-width: 100%;
       @media (min-width: 1300px) {
         max-width: 40vw;
