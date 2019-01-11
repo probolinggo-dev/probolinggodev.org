@@ -6,8 +6,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import routes from './routes';
 import * as serviceWorker from './serviceWorker';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const client = new ApolloClient({
-  uri: `${window.location.origin}/graphql`,
+  uri: isProd ? `${window.location.origin}/graphql` : 'http://localhost:5000/graphql',
 });
 
 const App = () => (
