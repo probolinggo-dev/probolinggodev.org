@@ -47,7 +47,11 @@ export default function Home() {
   const projectItems = (projectsData && projectsData.projects && projectsData.projects.items) || [];
   return (
     <div>
-      <Header title="Engineering Collaboration" description="Berkumpulnya anak - anak IT Probolinggo dengan membuat inovasi, berbagi pengalaman & Pengetahuan untuk membangun Kota & Kabupaten yang lebih baik." />
+      <Header
+        background="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80"
+        title="Engineering Collaboration"
+        description="Berkumpulnya anak - anak IT Probolinggo dengan membuat inovasi, berbagi pengalaman & Pengetahuan untuk membangun Kota & Kabupaten yang lebih baik."
+      />
       <Container>
         <h2>Places</h2>
         <Row size={3} spacer={10}>

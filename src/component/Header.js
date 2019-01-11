@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo/variant1.png';
 import Container from './Container';
 
-const DEFAULT_BACKGROUND = 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80';
+const DEFAULT_BACKGROUND = '';
 
 const DEFAULT_MENU = [
   {
