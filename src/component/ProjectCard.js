@@ -36,13 +36,16 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Title = styled.h1`
-  font-size: 18px;
+const Title = styled.h3`
+  font-size: 16px;
   color: #1a1a1a;
+  margin: 3px 0;
+  word-break: break-all;
 `;
 const Description = styled.p`
   color: #424242;
   font-size: 14px;
+  margin: 0;
 `;
 
 const LinkContainer = styled.div`
@@ -61,7 +64,7 @@ const Link = styled.a`
 `;
 
 const Logo = styled.img`
-  width: 50%;
+  width: 100%;
 `;
 
 export default ProjectCard;

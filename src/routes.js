@@ -8,4 +8,8 @@ export default [
     path: '/about',
     screen: 'About',
   },
+  {
+    path: '/places/:slug',
+    screen: 'Place',
+  },
 ];

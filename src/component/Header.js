@@ -24,16 +24,16 @@ type Menu = {
 type Props = {
   title: string,
   description: string,
-  menus: [Menu],
-  background: string,
+  menus?: [Menu],
+  background?: string,
 }
 
 export default function Header(props: Props) {
   const {
     title,
     description,
-    menus = DEFAULT_MENU,
-    background = DEFAULT_BACKGROUND,
+    menus,
+    background,
   } = props;
   const [mobileMenuVisible, setMobileMenu] = useState(false);
   const toggleMenu = () => setMobileMenu(!mobileMenuVisible);
@@ -54,7 +54,7 @@ export default function Header(props: Props) {
             }}
           >
             <ul>
-              {menus.map((n, i) => (
+              {(menus || DEFAULT_MENU).map((n, i) => (
                 <li key={i}>
                   <Link to={n.path}>{n.label}</Link>
                 </li>
@@ -66,7 +66,7 @@ export default function Header(props: Props) {
       </StyledNav>
       <StyledHeader
         style={{
-          backgroundImage: `url(${background})`,
+          backgroundImage: `url(${background || DEFAULT_BACKGROUND})`,
         }}
       >
         <section>
