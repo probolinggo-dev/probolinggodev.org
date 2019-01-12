@@ -53,7 +53,7 @@ export default function Home() {
         description="Berkumpulnya anak - anak IT Probolinggo dengan membuat inovasi, berbagi pengalaman & Pengetahuan untuk membangun Kota & Kabupaten yang lebih baik."
       />
       <Container>
-        <h2>Places</h2>
+        <h2>Tempat Wisata</h2>
         <Row size={3} spacer={10}>
           {placeItems.map((item, index) => (
             <div className="item" key={index}>

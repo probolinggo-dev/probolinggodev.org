@@ -7,35 +7,33 @@ type Props = {
   title: string,
   image: string,
   slug: string,
-  description: string,
 }
 
 export default (props: Props) => {
   const {
     title,
     image,
-    description,
     slug,
   } = props;
 
   return (
     <Container>
-      <article>
-        <Link to={`/places/${slug}`}>
+      <Link to={`/places/${slug}`}>
+        <article>
           <figure>
             <img src={image} alt={title} />
           </figure>
           <aside>
             <h3>{title}</h3>
-            <p>{description}</p>
           </aside>
-        </Link>
-      </article>
+        </article>
+      </Link>
     </Container>
   );
 };
 
 const Container = styled.div`
+  width: 100%;
   a {
     text-decoration: none;
     &:hover {
@@ -45,25 +43,25 @@ const Container = styled.div`
       }
     }
   }
-  > article {
+  article {
     position: relative;
     height: 380px;
     width: 100%;
     overflow: hidden;
     padding: 20px 40px;
-    color: white;
+    border-radius: 30px;
+    box-shadow: 0px 0px 5px 0px #cecece;
 
     aside {
-      position: relative;
-      z-index: 2;
-      color: white;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: white;
+      width: 100%;
+      color: #313131;
+      padding: 10px 30px;
       h3 {
         margin: 10px 0;
-      }
-
-      p {
-        line-height: 1.3;
-        margin: 0;
       }
     }
 
@@ -83,18 +81,6 @@ const Container = styled.div`
         height: 100%;
         transform: translate(-50%, -50%);
         transition: all 0.2s linear;
-      }
-
-      &::before {
-        content: "";
-        background: rgba(0, 0, 0, 0.31);
-        position: absolute;
-        left: 0;
-        top: 0;
-        display: block;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
       }
     }
   }

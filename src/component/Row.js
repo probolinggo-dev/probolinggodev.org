@@ -26,7 +26,7 @@ const StyledRow = styled.div`
   flex-wrap: wrap;
 
   > .item {
-    margin-left: ${props => props.spacer}px;
+    margin-right: ${props => props.spacer}px;
     margin-bottom: ${props => props.spacer * 2}px;
     display: flex;
     flex: ${props => `calc(${100 / props.size}% - ${props.spacer}px) 0 0`};
