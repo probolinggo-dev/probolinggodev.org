@@ -51,6 +51,7 @@ const Container = styled.div`
     padding: 20px 40px;
     border-radius: 30px;
     box-shadow: 0px 0px 5px 0px #cecece;
+    background-color: grey;
 
     aside {
       position: absolute;
