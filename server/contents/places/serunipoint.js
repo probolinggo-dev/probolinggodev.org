@@ -1,5 +1,5 @@
 module.exports = {
-  slug: 'seruni-point',
+  slug: 'serunipoint',
   title: 'Seruni Point',
   image: 'https://radarbromo.co.id/wp-content/uploads/2018/12/19-foto-Puncak-seruni-point-01-edit-1-563x353.jpg',
   description: 'Seruni Point, destinasi wisata baru yang menjadi daya tarik tersendiri bagi wisatawan yang berkunjung ke Gunung Bromo.',
