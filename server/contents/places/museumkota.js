@@ -1,5 +1,5 @@
 module.exports = {
-  slug: 'museumkotaprobolinggo',
+  slug: 'museumkota',
   title: 'Museum Kota Probolinggo',
   image: 'http://www.eastjava.com/tourism/probolinggo/city-tour/images/museum.jpg',
   description: 'Museum Probolinggo merupakan destinasi wisata yang menawarkan konsep sejarah dari Probolinggo, Museum ini terletak di Jalan Suroyo No 7 Kota Probolinggo, jadi anda tidak akan sulit untuk menemukan letak dari museum ini, karena akses menuju kesana yang sangat mudah dijangkau, baik oleh wisatawan yang menggunakan kendaraan sendiri atau dengan menaiki kendaraan umum',
