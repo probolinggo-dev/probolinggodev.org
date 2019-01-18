@@ -9,8 +9,6 @@ import routes from './routes';
 import Footer from './component/Footer';
 import * as serviceWorker from './serviceWorker';
 
-ReactGA.initialize('UA-132442251-1');
-ReactGA.pageview('/home');
 const customHistory = createBrowserHistory();
 let prevLocation;
 
@@ -19,15 +17,17 @@ const isProd = process.env.NODE_ENV === 'production';
 const client = new ApolloClient({
   uri: isProd ? `${window.location.origin}/graphql` : 'http://localhost:5000/graphql',
 });
+ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID, { debug: !isProd });
 
-const ScrollRestoration = Page => {
+const createApp = Page => {
   return props => {
     const { location } = props;
     if (location.pathname !== prevLocation) {
+      ReactGA.pageview(location.pathname.concat(location.search));
       window.scrollTo(0, 0);
     }
     prevLocation = location.pathname;
-    return <Page {...props} />;
+    return <Page tracker={ReactGA} {...props} />;
   };
 };
 
@@ -38,7 +38,7 @@ const App = () => (
         {routes.map((item, index) => {
           const { screen, ...rest } = item;
           const Component = require(`./screen/${screen}`).default;
-          return <Route key={index} component={ScrollRestoration(Component)} {...rest} />;
+          return <Route key={index} component={createApp(Component)} {...rest} />;
         })}
         <Footer />
       </div>
